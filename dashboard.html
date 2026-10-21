@@ -42,9 +42,12 @@
           <option value="sa">संस्कृतम् (Sanskrit)</option>
         </select>
 
-        <span class="text-sm bg-emerald-700 px-3 py-1 rounded-full border border-emerald-600">
-          <i class="fa-solid fa-user-check text-yellow-300 mr-1"></i> Rural Entrepreneur
-        </span>
+        <div class="flex items-center space-x-2 bg-emerald-700 px-3 py-1 rounded-full border border-emerald-600">
+          <div id="userInitials" class="w-7 h-7 rounded-full bg-emerald-900 text-yellow-300 font-bold text-xs flex items-center justify-center border border-yellow-300">
+            RV
+          </div>
+          <span id="userNameDisplay" class="text-xs font-semibold text-white">Ramesh Verma</span>
+        </div>
         <a href="index.html" class="text-sm text-yellow-200 hover:underline">Exit Dashboard</a>
       </div>
     </div>
@@ -104,9 +107,9 @@
         <div id="postsFeed" class="mt-6 space-y-4">
           <div class="border-t pt-4 post-card" data-user-vote="none">
             <div class="flex items-center space-x-3 mb-2">
-              <div class="w-8 h-8 rounded-full bg-emerald-600 text-white font-bold text-xs flex items-center justify-center">RV</div>
+              <div class="w-8 h-8 rounded-full bg-emerald-600 text-white font-bold text-xs flex items-center justify-center post-user-initials">RV</div>
               <div>
-                <h4 class="text-sm font-bold text-slate-800">Ramesh Verma <span class="text-xs font-normal text-slate-400">• Agri-Processing (Satara)</span></h4>
+                <h4 class="text-sm font-bold text-slate-800"><span class="post-user-name">Ramesh Verma</span> <span class="text-xs font-normal text-slate-400">• Agri-Processing (Satara)</span></h4>
                 <p class="text-xs text-slate-400">2 hours ago</p>
               </div>
             </div>
@@ -214,6 +217,26 @@
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <script>
+    // Load dynamic user session details
+    document.addEventListener("DOMContentLoaded", () => {
+      const storedName = localStorage.getItem('userName') || localStorage.getItem('registeredName') || 'Ramesh Verma';
+      const nameParts = storedName.trim().split(' ');
+      let initials = 'RV';
+      if (nameParts.length >= 2) {
+        initials = (nameParts[0][0] + nameParts[1][0]).toUpperCase();
+      } else if (nameParts.length === 1 && nameParts[0].length > 0) {
+        initials = nameParts[0].substring(0, 2).toUpperCase();
+      }
+
+      document.getElementById('userNameDisplay').innerText = storedName;
+      document.getElementById('userInitials').innerText = initials;
+      
+      const postInitialsEl = document.querySelector('.post-user-initials');
+      const postNameEl = document.querySelector('.post-user-name');
+      if (postInitialsEl) postInitialsEl.innerText = initials;
+      if (postNameEl) postNameEl.innerText = storedName;
+    });
+
     const regionalFallbacks = {
       ta: { "Community Peer Discussion Forum": "சமூக சக கலந்துரையாடல் மன்றம்", "Quick Overview": "விரைவான கண்ணோட்டம்", "Your Government Support Applications": "உங்கள் அரசு ஆதரவு விண்ணப்பங்கள்" },
       ur: { "Community Peer Discussion Forum": "کمیونٹی ہم منصب بحث فورم", "Quick Overview": "فوری خلاصہ", "Your Government Support Applications": "آپ کی حکومتی معاونت کی درخواستیں" },
@@ -322,7 +345,8 @@
 
       if (input.value.trim() === '') return;
 
-      const newCommentHtml = `<div class="bg-white p-2 rounded border border-slate-100"><strong>You:</strong> ${input.value}</div>`;
+      const storedName = localStorage.getItem('userName') || localStorage.getItem('registeredName') || 'You';
+      const newCommentHtml = `<div class="bg-white p-2 rounded border border-slate-100"><strong>${storedName}:</strong> ${input.value}</div>`;
       commentList.insertAdjacentHTML('beforeend', newCommentHtml);
 
       let currentComments = parseInt(commentCountSpan.innerText);
@@ -335,13 +359,19 @@
       e.preventDefault();
       const content = document.getElementById('postContent').value;
       const feed = document.getElementById('postsFeed');
+      const storedName = localStorage.getItem('userName') || localStorage.getItem('registeredName') || 'Ramesh Verma';
+      const nameParts = storedName.trim().split(' ');
+      let initials = 'RV';
+      if (nameParts.length >= 2) {
+        initials = (nameParts[0][0] + nameParts[1][0]).toUpperCase();
+      }
 
       const postHtml = `
         <div class="border-t pt-4 bg-emerald-50/50 p-4 rounded-lg post-card" data-user-vote="none">
           <div class="flex items-center space-x-3 mb-2">
-            <div class="w-8 h-8 rounded-full bg-emerald-700 text-white font-bold text-xs flex items-center justify-center">YOU</div>
+            <div class="w-8 h-8 rounded-full bg-emerald-700 text-white font-bold text-xs flex items-center justify-center">${initials}</div>
             <div>
-              <h4 class="text-sm font-bold text-slate-800">You <span class="text-xs font-normal text-slate-400">• Just now</span></h4>
+              <h4 class="text-sm font-bold text-slate-800">${storedName} <span class="text-xs font-normal text-slate-400">• Just now</span></h4>
             </div>
           </div>
           <p class="text-sm text-slate-700">${content}</p>
