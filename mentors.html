@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mentors & Incubators Directory - GramUdyogNetwork</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+
+  <nav class="bg-emerald-800 text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <i class="fa-solid fa-seedling text-2xl text-yellow-300"></i>
+        <a href="index.html" class="text-xl font-bold tracking-wide">GramUdyogNetwork</a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-emerald-900 text-white text-xs px-2 py-1.5 rounded border border-emerald-700 outline-none">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="bn">বাংলা (Bengali)</option>
+          <option value="mr">मराठी (Marathi)</option>
+          <option value="te">తెలుగు (Telugu)</option>
+          <option value="ta">தமிழ் (Tamil)</option>
+          <option value="gu">ગુજરાતી (Gujarati)</option>
+          <option value="ur">اردو (Urdu)</option>
+          <option value="kn">ಕನ್ನಡ (Kannada)</option>
+          <option value="od">ଓଡ଼ିଆ (Odia)</option>
+          <option value="ml">മലയാളം (Malayalam)</option>
+          <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+          <option value="as">অসমীয়া (Assamese)</option>
+          <option value="mai">मैथिली (Maithili)</option>
+          <option value="sat">संथाली (Santali)</option>
+          <option value="ks">कश्मीरी (Kashmiri)</option>
+          <option value="ne">नेपाली (Nepali)</option>
+          <option value="sd">सिंधी (Sindhi)</option>
+          <option value="kok">कोंकणी (Konkani)</option>
+          <option value="doi">डोगरी (Dogri)</option>
+          <option value="mni">मणिपुरी (Manipuri)</option>
+          <option value="sa">संस्कृतम् (Sanskrit)</option>
+        </select>
+
+        <div class="flex space-x-6 text-sm font-medium">
+          <a href="index.html" class="hover:text-yellow-200">Home</a>
+          <a href="dashboard.html" class="hover:text-yellow-200">Dashboard</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="bg-emerald-900 text-white py-10 px-4 text-center">
+    <h1 class="text-3xl font-extrabold">Expert Mentor & Incubator Directory</h1>
+    <p class="text-emerald-200 text-sm mt-2">Connect directly with vetted industry experts, government advisors, and business strategists.</p>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    
+    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm mb-8 flex flex-wrap gap-4 items-center justify-between">
+      <div class="flex gap-3 items-center">
+        <label for="domainFilter" class="text-xs font-bold text-slate-600">Filter By Domain:</label>
+        <select id="domainFilter" onchange="filterMentors()" class="border border-slate-300 rounded-lg text-xs p-2.5 outline-none focus:ring-2 focus:ring-emerald-500 bg-slate-50 font-medium">
+          <option value="all">All Domains</option>
+          <option value="agri">Agri-Processing & Food Products</option>
+          <option value="govt">Govt Subsidies & Legal Compliance</option>
+          <option value="digital">Digital Marketing & E-Commerce</option>
+          <option value="handicraft">Handicrafts & Handloom</option>
+          <option value="dairy">Dairy & Livestock Management</option>
+        </select>
+      </div>
+      <span id="mentorCount" class="text-xs text-emerald-800 bg-emerald-100 font-bold px-3 py-1 rounded-full">
+        Showing 25 Mentors
+      </span>
+    </div>
+
+    <div id="mentorsGrid" class="grid md:grid-cols-3 gap-6">
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="agri">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xl flex items-center justify-center">AK</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.9</span>
+          </div>
+          <h3 class="text-lg font-bold">Anil Kumar</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Agri-Business & Supply Chain</p>
+          <p class="text-xs text-slate-600 mb-3">12+ years experience guiding rural farmers set up processing units, obtaining FSSAI licenses, and bulk buyer tie-ups.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹499 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Anil Kumar', '₹499')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="agri">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xl flex items-center justify-center">MK</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.8</span>
+          </div>
+          <h3 class="text-lg font-bold">Mahesh Kulkarni</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Organic Crop Processing & Milling</p>
+          <p class="text-xs text-slate-600 mb-3">Expert in setting up solar pulse processing and organic grain packaging lines for farmer collectives.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹399 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Mahesh Kulkarni', '₹399')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="agri">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xl flex items-center justify-center">SR</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.7</span>
+          </div>
+          <h3 class="text-lg font-bold">Suresh Rao</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Cold Storage & Post-Harvest Logistics</p>
+          <p class="text-xs text-slate-600 mb-3">Specialist in low-cost micro cold storages for fruits and vegetables to prevent supply chain losses.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹599 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Suresh Rao', '₹599')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="agri">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xl flex items-center justify-center">KD</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.9</span>
+          </div>
+          <h3 class="text-lg font-bold">Kavita Deshmukh</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Spices Processing & Export Quality</p>
+          <p class="text-xs text-slate-600 mb-3">Helps rural women FPOs set up spice grinding units and comply with APEDA export standards.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹450 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Kavita Deshmukh', '₹450')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="agri">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xl flex items-center justify-center">RG</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 5.0</span>
+          </div>
+          <h3 class="text-lg font-bold">Ramesh Gupta</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Bio-Fertilizer & Mushroom Farming</p>
+          <p class="text-xs text-slate-600 mb-3">Consultant for eco-friendly bio-inputs manufacturing and commercial indoor mushroom cultivation.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹500 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Ramesh Gupta', '₹500')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="govt">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-teal-100 text-teal-800 font-bold text-xl flex items-center justify-center">PS</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.8</span>
+          </div>
+          <h3 class="text-lg font-bold">Priya Sharma</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Govt Subsidies & MSME Funding</p>
+          <p class="text-xs text-slate-600 mb-3">Specialist in PMEGP loan subsidy documentation, ASPIRE Livelihood Incubators, and Mudra loan approvals.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹600 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Priya Sharma', '₹600')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="govt">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-teal-100 text-teal-800 font-bold text-xl flex items-center justify-center">NS</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.9</span>
+          </div>
+          <h3 class="text-lg font-bold">Nitin Saxena</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">NABARD & Agriculture Infrastructure Fund</p>
+          <p class="text-xs text-slate-600 mb-3">15+ years experience securing capital interest subvention and NABARD rural credit grants.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹750 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Nitin Saxena', '₹750')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="govt">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-teal-100 text-teal-800 font-bold text-xl flex items-center justify-center">AM</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.7</span>
+          </div>
+          <h3 class="text-lg font-bold">Anjali Mehta</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">FSSAI & GST Legal Consultant</p>
+          <p class="text-xs text-slate-600 mb-3">Helps rural businesses obtain fast-track FSSAI registration, Udyam MSME certificate, and GST filings.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹400 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Anjali Mehta', '₹400')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="govt">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-teal-100 text-teal-800 font-bold text-xl flex items-center justify-center">SJ</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.8</span>
+          </div>
+          <h3 class="text-lg font-bold">Sanjay Joshi</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Stand-Up India & SC/ST Schemes</p>
+          <p class="text-xs text-slate-600 mb-3">Advisor for marginalized entrepreneurs seeking bank loans from ₹10 Lakhs to ₹1 Crore.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹500 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Sanjay Joshi', '₹500')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="govt">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-teal-100 text-teal-800 font-bold text-xl flex items-center justify-center">PM</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.9</span>
+          </div>
+          <h3 class="text-lg font-bold">Pooja Mishra</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">PMFME Micro Food Enterprise Scheme</p>
+          <p class="text-xs text-slate-600 mb-3">Specialized in securing 35% credit-linked subsidies for existing micro food processing units.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹550 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Pooja Mishra', '₹550')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="digital">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-amber-100 text-amber-800 font-bold text-xl flex items-center justify-center">RP</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 5.0</span>
+          </div>
+          <h3 class="text-lg font-bold">Rajesh Patel</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Digital Marketing & ONDC Onboarding</p>
+          <p class="text-xs text-slate-600 mb-3">Helped 50+ handicraft artisans list products on Amazon, ONDC, and WhatsApp Business catalog.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹500 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Rajesh Patel', '₹500')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="digital">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-amber-100 text-amber-800 font-bold text-xl flex items-center justify-center">VN</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.8</span>
+          </div>
+          <h3 class="text-lg font-bold">Varun Nair</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">WhatsApp Commerce & Social Sales</p>
+          <p class="text-xs text-slate-600 mb-3">Trains rural sellers to automate customer orders via WhatsApp chatbot and Meta Ads.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹399 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Varun Nair', '₹399')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="digital">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-amber-100 text-amber-800 font-bold text-xl flex items-center justify-center">SS</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.7</span>
+          </div>
+          <h3 class="text-lg font-bold">Sneha Shah</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Brand Product Photography & Packaging</p>
+          <p class="text-xs text-slate-600 mb-3">Guides artisans on smartphone product photography and eco-friendly attractive packaging.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹350 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Sneha Shah', '₹350')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="digital">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-amber-100 text-amber-800 font-bold text-xl flex items-center justify-center">AA</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.9</span>
+          </div>
+          <h3 class="text-lg font-bold">Alok Agarwal</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Direct-to-Consumer (D2C) Store Setup</p>
+          <p class="text-xs text-slate-600 mb-3">Specialist in creating low-cost Shopify and WooCommerce websites for rural micro-brands.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹650 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Alok Agarwal', '₹650')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="digital">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-amber-100 text-amber-800 font-bold text-xl flex items-center justify-center">RT</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.8</span>
+          </div>
+          <h3 class="text-lg font-bold">Rohan Tiwari</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Regional SEO & Google My Business</p>
+          <p class="text-xs text-slate-600 mb-3">Helps local service providers and stores rank #1 on Google Maps for regional customer discovery.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹450 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Rohan Tiwari', '₹450')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="handicraft">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-purple-100 text-purple-800 font-bold text-xl flex items-center justify-center">SD</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.7</span>
+          </div>
+          <h3 class="text-lg font-bold">Sunita Devi</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Handicrafts Cluster & Artisan SHGs</p>
+          <p class="text-xs text-slate-600 mb-3">Leader of 200+ women self-help groups. Expert in global export quality checks and artisan packaging.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹300 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Sunita Devi', '₹300')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="handicraft">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-purple-100 text-purple-800 font-bold text-xl flex items-center justify-center">MS</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.9</span>
+          </div>
+          <h3 class="text-lg font-bold">Meenakshi Sundaram</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Handloom Weaving & Natural Dyes</p>
+          <p class="text-xs text-slate-600 mb-3">Master weaver advisor connecting traditional textile clusters directly with luxury fashion buyers.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹500 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Meenakshi Sundaram', '₹500')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="handicraft">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-purple-100 text-purple-800 font-bold text-xl flex items-center justify-center">GB</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.8</span>
+          </div>
+          <h3 class="text-lg font-bold">Gopal Biswas</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Terracotta & Clay Craft Export</p>
+          <p class="text-xs text-slate-600 mb-3">Specialist in pottery kiln efficiency and shock-proof export packaging for delicate clay items.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹400 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Gopal Biswas', '₹400')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="handicraft">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-purple-100 text-purple-800 font-bold text-xl flex items-center justify-center">RC</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.6</span>
+          </div>
+          <h3 class="text-lg font-bold">Rina Choudhury</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Bamboo & Cane Product Innovation</p>
+          <p class="text-xs text-slate-600 mb-3">Guides North-East bamboo artisans in modern lifestyle product designs and corporate gifting tie-ups.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹350 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Rina Choudhury', '₹350')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="handicraft">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-purple-100 text-purple-800 font-bold text-xl flex items-center justify-center">KS</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 5.0</span>
+          </div>
+          <h3 class="text-lg font-bold">Karan Singh</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Geographical Indication (GI) Tagging</p>
+          <p class="text-xs text-slate-600 mb-3">Helps traditional art forms secure GI status and protects artisan IP rights across national markets.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹600 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Karan Singh', '₹600')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="dairy">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-blue-100 text-blue-800 font-bold text-xl flex items-center justify-center">VC</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.9</span>
+          </div>
+          <h3 class="text-lg font-bold">Vikram Chauhan</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Dairy Value-Addition & Bio-Tech</p>
+          <p class="text-xs text-slate-600 mb-3">Consultant for micro-dairies on automated milking, organic cheese manufacturing, and direct cold-chain transport.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹500 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Vikram Chauhan', '₹500')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="dairy">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-blue-100 text-blue-800 font-bold text-xl flex items-center justify-center">DB</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.8</span>
+          </div>
+          <h3 class="text-lg font-bold">Dr. Deepak Bhardwaj</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Livestock Health & Breed Improvement</p>
+          <p class="text-xs text-slate-600 mb-3">Veterinary expert advising on cattle nutrition, disease prevention, and high-yield indigenous breeds.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹450 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Dr. Deepak Bhardwaj', '₹450')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="dairy">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-blue-100 text-blue-800 font-bold text-xl flex items-center justify-center">SY</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.7</span>
+          </div>
+          <h3 class="text-lg font-bold">Sarla Yadav</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Goat Farming & Poultry Co-operatives</p>
+          <p class="text-xs text-slate-600 mb-3">Organizes women-led small livestock collectives and connects them with regional meat processing markets.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹350 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Sarla Yadav', '₹350')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="dairy">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-blue-100 text-blue-800 font-bold text-xl flex items-center justify-center">AH</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 4.9</span>
+          </div>
+          <h3 class="text-lg font-bold">Arvind Hegde</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Organic A2 Milk & Ghee Production</p>
+          <p class="text-xs text-slate-600 mb-3">Guides dairy farmers on traditional Bilona ghee processing, glass bottle eco-packaging, and premium pricing.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹550 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Arvind Hegde', '₹550')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+      <div class="mentor-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-domain="dairy">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-14 h-14 rounded-full bg-blue-100 text-blue-800 font-bold text-xl flex items-center justify-center">MK</div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 5.0</span>
+          </div>
+          <h3 class="text-lg font-bold">Manoj Khatri</h3>
+          <p class="text-xs text-emerald-700 font-semibold mb-2">Biogas & Cattle Waste-to-Wealth</p>
+          <p class="text-xs text-slate-600 mb-3">Specialist in commercial biogas plant setup, compressed bio-CNG bottling, and organic slurry fertilizer sales.</p>
+          <div class="mb-4 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+            <i class="fa-solid fa-indian-rupee-sign text-emerald-700 mr-1"></i> Fee: ₹500 / session
+          </div>
+        </div>
+        <button onclick="requestSession('Manoj Khatri', '₹500')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs transition">Book 1-on-1 Mentorship</button>
+      </div>
+
+    </div>
+
+    <div id="noMentorState" class="hidden text-center py-12 bg-white rounded-xl border border-slate-200">
+      <i class="fa-solid fa-user-slash text-4xl text-slate-300 mb-3"></i>
+      <h3 class="font-bold text-slate-700">No mentors found for this domain yet</h3>
+      <p class="text-xs text-slate-500 mt-1">Try selecting "All Domains" or request a custom mentor allocation.</p>
+    </div>
+
+  </div>
+
+  <div id="google_translate_element" class="hidden"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,hi,bn,mr,te,ta,gu,ur,kn,or,ml,pa,as,mai,sat,ks,ne,sd,kok,doi,mni,sa', autoDisplay: false}, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script>
+    const regionalFallbacks = {
+      ta: { "Expert Mentor & Incubator Directory": "நிபுணர் வழிகாட்டி & இன்குபேட்டர் அடைவு", "Filter By Domain:": "துறை வாரியாக வடிகட்டு:" },
+      ur: { "Expert Mentor & Incubator Directory": "ماہر منٹر اور انکیوبیٹر ڈائریکٹری", "Filter By Domain:": "ڈومین کے لحاظ سے فلٹر کریں:" },
+      od: { "Expert Mentor & Incubator Directory": "ବିଶେଷଜ୍ଞ ମେଣ୍ଟର୍ ଏବଂ ଇନକ୍ୟୁବେଟର ଡାଇରେକ୍ଟୋରୀ", "Filter By Domain:": "ଡୋମେନ୍ ଦ୍ୱାରା ଫିଲ୍ଟର୍ କରନ୍ତୁ:" },
+      ml: { "Expert Mentor & Incubator Directory": "വിദഗ്ദ്ധ മെന്റർ & ഇൻകുബേറ്റർ ഡയറക്ടറി", "Filter By Domain:": "ഡൊമെയ്ൻ പ്രകാരം ഫിൽട്ടർ ചെയ്യുക:" },
+      mai: { "Expert Mentor & Incubator Directory": "विशेषज्ञ मेंटर आ इन्कुबेटर निर्देशिका", "Filter By Domain:": "डोमेन द्वारा फ़िल्टर करू:" },
+      ks: { "Expert Mentor & Incubator Directory": "ماہر منٹر تہٕ انکیوبیٹر ڈائریکٹری", "Filter By Domain:": "ڈومین ذریعہ فلٹر کرٛیو:" },
+      ne: { "Expert Mentor & Incubator Directory": "विशेषज्ञ मेन्टर र इन्कुबेटर डाइरेक्टरी", "Filter By Domain:": "डोमेन द्वारा फिल्टर गर्नुहोस्:" },
+      kok: { "Expert Mentor & Incubator Directory": "तज्ञ मेंटर आनी इन्कुबेटर निर्देशिका", "Filter By Domain:": "डोमेन प्रमाणें फिल्टर करात:" },
+      doi: { "Expert Mentor & Incubator Directory": "विशेषज्ञ मेंटर ते इन्कुबेटर सूची", "Filter By Domain:": "डोमेन आਧਾਰ ਪਰ ਫਿਲਟਰ ਕਰੋ:" },
+      mni: { "Expert Mentor & Incubator Directory": "এক্সপার্ট মেন্তর অমসুং ইনকুবেটর দাইরেক্তরি", "Filter By Domain:": "দোমেনগী মতুং ইন্না ফিল্তর তৌবা:" }
+    };
+
+    function changeLanguage(langCode) {
+      const selectField = document.querySelector('.goog-te-combo');
+      if (selectField) {
+        selectField.value = langCode;
+        selectField.dispatchEvent(new Event('change'));
+      }
+      
+      if (regionalFallbacks[langCode]) {
+        setTimeout(() => {
+          const dict = regionalFallbacks[langCode];
+          document.querySelectorAll('h1, label').forEach(el => {
+            for (let key in dict) {
+              if (el.innerText && el.innerText.trim() === key) {
+                el.innerText = dict[key];
+              }
+            }
+          });
+        }, 800);
+      }
+    }
+
+    function filterMentors() {
+      const selectedDomain = document.getElementById('domainFilter').value;
+      const cards = document.querySelectorAll('.mentor-card');
+      const countLabel = document.getElementById('mentorCount');
+      const noState = document.getElementById('noMentorState');
+
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cardDomain = card.getAttribute('data-domain');
+
+        if (selectedDomain === 'all' || cardDomain === selectedDomain) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      countLabel.innerText = `Showing ${visibleCount} Mentor${visibleCount !== 1 ? 's' : ''}`;
+
+      if (visibleCount === 0) {
+        noState.classList.remove('hidden');
+      } else {
+        noState.classList.add('hidden');
+      }
+    }
+
+    function requestSession(mentorName, fee) {
+      alert(`Mentorship Session booked with ${mentorName} at fee ${fee}!\nTaking you to your Dashboard...`);
+      window.location.href = 'dashboard.html';
+    }
+  </script>
+</body>
+</html>

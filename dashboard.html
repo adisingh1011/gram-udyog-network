@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrepreneur Dashboard - GramUdyogNetwork</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans">
+
+  <nav class="bg-emerald-800 text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <i class="fa-solid fa-seedling text-2xl text-yellow-300"></i>
+        <a href="index.html" class="text-xl font-bold tracking-wide">GramUdyogNetwork</a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-emerald-900 text-white text-xs px-2 py-1.5 rounded border border-emerald-700 outline-none">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="bn">বাংলা (Bengali)</option>
+          <option value="mr">मराठी (Marathi)</option>
+          <option value="te">తెలుగు (Telugu)</option>
+          <option value="ta">தமிழ் (Tamil)</option>
+          <option value="gu">ગુજરાતી (Gujarati)</option>
+          <option value="ur">اردو (Urdu)</option>
+          <option value="kn">ಕನ್ನಡ (Kannada)</option>
+          <option value="od">ଓଡ଼ିଆ (Odia)</option>
+          <option value="ml">മലയാളം (Malayalam)</option>
+          <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+          <option value="as">অসমীয়া (Assamese)</option>
+          <option value="mai">मैथिली (Maithili)</option>
+          <option value="sat">संथाली (Santali)</option>
+          <option value="ks">कश्मीरी (Kashmiri)</option>
+          <option value="ne">नेपाली (Nepali)</option>
+          <option value="sd">सिंधी (Sindhi)</option>
+          <option value="kok">कोंकणी (Konkani)</option>
+          <option value="doi">डोगरी (Dogri)</option>
+          <option value="mni">मणिपुरी (Manipuri)</option>
+          <option value="sa">संस्कृतम् (Sanskrit)</option>
+        </select>
+
+        <span class="text-sm bg-emerald-700 px-3 py-1 rounded-full border border-emerald-600">
+          <i class="fa-solid fa-user-check text-yellow-300 mr-1"></i> Rural Entrepreneur
+        </span>
+        <a href="index.html" class="text-sm text-yellow-200 hover:underline">Exit Dashboard</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-7xl mx-auto px-4 py-8 grid md:grid-cols-4 gap-6">
+
+    <div class="space-y-4">
+      <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+        <h3 class="font-bold text-slate-700 text-sm mb-3">Quick Overview</h3>
+        <div class="space-y-3">
+          <div onclick="showActiveSessionsModal()" class="flex justify-between items-center bg-emerald-50 hover:bg-emerald-100 p-3 rounded-lg border border-emerald-200 cursor-pointer transition">
+            <span class="text-xs font-semibold text-emerald-800"><i class="fa-solid fa-user-tie mr-1"></i> Mentorship Sessions</span>
+            <span class="text-lg font-bold text-emerald-700">2 Active</span>
+          </div>
+
+          <div onclick="scrollToSection('appliedSchemesSection')" class="flex justify-between items-center bg-blue-50 hover:bg-blue-100 p-3 rounded-lg border border-blue-200 cursor-pointer transition">
+            <span class="text-xs font-semibold text-blue-800"><i class="fa-solid fa-file-contract mr-1"></i> Applied Schemes</span>
+            <span class="text-lg font-bold text-blue-700">1 Submitted</span>
+          </div>
+
+          <div onclick="scrollToSection('forum')" class="flex justify-between items-center bg-amber-50 hover:bg-amber-100 p-3 rounded-lg border border-amber-200 cursor-pointer transition">
+            <span class="text-xs font-semibold text-amber-800"><i class="fa-solid fa-comments mr-1"></i> Peer Posts</span>
+            <span class="text-lg font-bold text-amber-700">5 Threads</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-2">
+        <a href="mentors.html" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-slate-100 text-slate-700 text-sm font-medium">
+          <i class="fa-solid fa-user-tie text-emerald-600 w-5"></i>
+          <span>Find New Mentor</span>
+        </a>
+        <a href="#forum" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-slate-100 text-slate-700 text-sm font-medium bg-slate-50">
+          <i class="fa-solid fa-comments text-emerald-600 w-5"></i>
+          <span>Peer Discussion Forum</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="md:col-span-3 space-y-6">
+
+      <div id="forum" class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm transition-all duration-300">
+        <h2 class="text-lg font-bold text-slate-900 mb-2">Community Peer Discussion Forum</h2>
+        <p class="text-xs text-slate-500 mb-4">Share your business challenge or ideas with other rural entrepreneurs and incubators.</p>
+        
+        <form id="postForm" onsubmit="createPost(event)" class="space-y-3">
+          <textarea id="postContent" required rows="3" placeholder="What challenge or question are you facing in your enterprise today?..." class="w-full p-3 border rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 outline-none"></textarea>
+          <div class="flex justify-between items-center">
+            <span class="text-xs text-slate-400"><i class="fa-solid fa-lock mr-1"></i> Visible to verified network members</span>
+            <button type="submit" class="bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold px-5 py-2.5 rounded-lg transition">
+              Publish Post
+            </button>
+          </div>
+        </form>
+
+        <div id="postsFeed" class="mt-6 space-y-4">
+          <div class="border-t pt-4 post-card" data-user-vote="none">
+            <div class="flex items-center space-x-3 mb-2">
+              <div class="w-8 h-8 rounded-full bg-emerald-600 text-white font-bold text-xs flex items-center justify-center">RV</div>
+              <div>
+                <h4 class="text-sm font-bold text-slate-800">Ramesh Verma <span class="text-xs font-normal text-slate-400">• Agri-Processing (Satara)</span></h4>
+                <p class="text-xs text-slate-400">2 hours ago</p>
+              </div>
+            </div>
+            <p class="text-sm text-slate-700">Looking for solar cold storage solutions for storing fresh organic tomatoes before transport. Any subsidy recommendations under PMEGP?</p>
+            
+            <div class="mt-3 flex items-center space-x-4 text-xs text-slate-600 font-medium">
+              <button onclick="handleVote(this, 'like')" class="like-btn flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-slate-200 hover:border-emerald-500 transition">
+                <i class="fa-regular fa-thumbs-up"></i> 
+                <span>Like (<span class="like-count">4</span>)</span>
+              </button>
+              <button onclick="handleVote(this, 'dislike')" class="dislike-btn flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-slate-200 hover:border-slate-400 transition">
+                <i class="fa-regular fa-thumbs-down"></i> 
+                <span>Dislike</span>
+              </button>
+              <button onclick="toggleCommentBox(this)" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-slate-200 hover:border-emerald-500 transition">
+                <i class="fa-regular fa-comment"></i> 
+                <span>Comment (<span class="comment-count">2</span>)</span>
+              </button>
+            </div>
+
+            <div class="comment-section hidden mt-3 bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-2">
+              <div class="comments-list space-y-2 text-xs text-slate-600">
+                <div class="bg-white p-2 rounded border border-slate-100"><strong>Anil Kumar:</strong> You can apply for 35% capital subsidy under PMEGP scheme.</div>
+                <div class="bg-white p-2 rounded border border-slate-100"><strong>Priya Sharma:</strong> Check out ASPIRE incubator guidelines for solar cold storage units.</div>
+              </div>
+              <div class="flex gap-2 mt-2">
+                <input type="text" placeholder="Write a helpful reply..." class="comment-input flex-1 px-3 py-1.5 border rounded text-xs outline-none focus:ring-1 focus:ring-emerald-500" />
+                <button onclick="addComment(this)" class="bg-emerald-700 text-white px-3 py-1.5 rounded text-xs font-bold hover:bg-emerald-800">Reply</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="appliedSchemesSection" class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm transition-all duration-300">
+        <h2 class="text-lg font-bold text-slate-900 mb-4">Your Government Support Applications</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs text-slate-600">
+            <thead class="bg-slate-50 text-slate-700 uppercase">
+              <tr>
+                <th class="p-3">Scheme Name</th>
+                <th class="p-3">Category</th>
+                <th class="p-3">Submitted On</th>
+                <th class="p-3">Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y">
+              <tr class="bg-emerald-50/30">
+                <td class="p-3 font-semibold text-slate-800">PMEGP Subsidy Loan</td>
+                <td class="p-3">Micro Enterprise</td>
+                <td class="p-3">18 Oct 2026</td>
+                <td class="p-3"><span class="bg-yellow-100 text-yellow-800 px-2.5 py-1 rounded-full font-bold">Under Review</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="sessionsModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl relative">
+      <button onclick="closeSessionsModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-lg w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center transition">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <h3 class="text-lg font-bold text-slate-900 mb-1">Your Active Mentorship Sessions</h3>
+      <p class="text-xs text-slate-500 mb-4">Current ongoing guidance sessions assigned to your enterprise.</p>
+
+      <div class="space-y-3">
+        <div class="p-3 rounded-xl border border-emerald-200 bg-emerald-50/50 flex justify-between items-center">
+          <div>
+            <h4 class="text-sm font-bold text-slate-800">Anil Kumar</h4>
+            <p class="text-xs text-emerald-700 font-medium">Agri-Business & Supply Chain</p>
+            <p class="text-[11px] text-slate-500 mt-1"><i class="fa-regular fa-clock mr-1"></i> Next Session: Tomorrow, 4:00 PM</p>
+          </div>
+          <span class="text-xs bg-emerald-600 text-white px-2.5 py-1 rounded-full font-bold">Active</span>
+        </div>
+
+        <div class="p-3 rounded-xl border border-teal-200 bg-teal-50/50 flex justify-between items-center">
+          <div>
+            <h4 class="text-sm font-bold text-slate-800">Priya Sharma</h4>
+            <p class="text-xs text-teal-700 font-medium">Govt Subsidies & Compliance</p>
+            <p class="text-[11px] text-slate-500 mt-1"><i class="fa-regular fa-clock mr-1"></i> Proposal Under Review</p>
+          </div>
+          <span class="text-xs bg-teal-600 text-white px-2.5 py-1 rounded-full font-bold">Active</span>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-3 border-t flex justify-end">
+        <button onclick="closeSessionsModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-lg text-xs font-semibold transition">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="google_translate_element" class="hidden"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,hi,bn,mr,te,ta,gu,ur,kn,or,ml,pa,as,mai,sat,ks,ne,sd,kok,doi,mni,sa', autoDisplay: false}, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script>
+    const regionalFallbacks = {
+      ta: { "Community Peer Discussion Forum": "சமூக சக கலந்துரையாடல் மன்றம்", "Quick Overview": "விரைவான கண்ணோட்டம்", "Your Government Support Applications": "உங்கள் அரசு ஆதரவு விண்ணப்பங்கள்" },
+      ur: { "Community Peer Discussion Forum": "کمیونٹی ہم منصب بحث فورم", "Quick Overview": "فوری خلاصہ", "Your Government Support Applications": "آپ کی حکومتی معاونت کی درخواستیں" },
+      od: { "Community Peer Discussion Forum": "ସମୁଦାୟ ସହକର୍ମୀ ଆଲୋଚନା ମଞ୍ଚ", "Quick Overview": "ଶୀଘ୍ର ସମୀକ୍ଷା", "Your Government Support Applications": "ଆପଣଙ୍କ ସରକାରୀ ସହାୟତା ଆବେଦନ" },
+      ml: { "Community Peer Discussion Forum": "കമ്മ്യൂണിറ്റി പീർ ചർച്ചാ ഫോറം", "Quick Overview": "ദ്രുത അവലോകനം", "Your Government Support Applications": "നിങ്ങളുടെ സർക്കാർ പിന്തുണ അപേക്ഷകൾ" },
+      mai: { "Community Peer Discussion Forum": "सामुदायिक सहकर्मी चर्चा मंच", "Quick Overview": "त्वरित सिंहावलोकन", "Your Government Support Applications": "अहाँक सरकारी सहयोग आवेदन" },
+      ks: { "Community Peer Discussion Forum": "کمیونٹی ہم منصب بحث فورم", "Quick Overview": "فوری جائزہ", "Your Government Support Applications": "تُہٕنٛز سرکاری مدد ہٕنٛز درخواستہٕ" },
+      ne: { "Community Peer Discussion Forum": "सामुदायिक सहकर्मी छलफल मञ्च", "Quick Overview": "द्रुत सिंहावलोकन", "Your Government Support Applications": "तपाईंको सरकारी सहयोग आवेदनहरू" },
+      kok: { "Community Peer Discussion Forum": "सामुदायिक सहकर्मी चर्चा मंच", "Quick Overview": "बेगीन सिंहावलोकन", "Your Government Support Applications": "तुमचे सरकारीदार आधार अर्ज" },
+      doi: { "Community Peer Discussion Forum": "सामुदायिक सहकर्मी चर्चा मंच", "Quick Overview": "त्वरित सिंहावलोकन", "Your Government Support Applications": "तुंदी सरकारी मदद आबर्तन" },
+      mni: { "Community Peer Discussion Forum": "কমিউনিটি পীর ডিসকাশন ফোরম", "Quick Overview": "থুনা য়েংবা", "Your Government Support Applications": "নহাক্কী সরকাগী মতিক চাবা এপ্লিকেসন" }
+    };
+
+    function changeLanguage(langCode) {
+      const selectField = document.querySelector('.goog-te-combo');
+      if (selectField) {
+        selectField.value = langCode;
+        selectField.dispatchEvent(new Event('change'));
+      }
+      
+      if (regionalFallbacks[langCode]) {
+        setTimeout(() => {
+          const dict = regionalFallbacks[langCode];
+          document.querySelectorAll('h2, h3, span, p, th').forEach(el => {
+            for (let key in dict) {
+              if (el.innerText && el.innerText.trim() === key) {
+                el.innerText = dict[key];
+              }
+            }
+          });
+        }, 800);
+      }
+    }
+
+    function handleVote(button, type) {
+      const card = button.closest('.post-card');
+      const likeBtn = card.querySelector('.like-btn');
+      const dislikeBtn = card.querySelector('.dislike-btn');
+      const likeCountSpan = card.querySelector('.like-count');
+      let currentLikes = parseInt(likeCountSpan.innerText);
+      let currentVote = card.getAttribute('data-user-vote') || 'none';
+
+      if (type === 'like') {
+        if (currentVote === 'like') {
+          currentLikes -= 1;
+          card.setAttribute('data-user-vote', 'none');
+          likeBtn.className = "like-btn flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-slate-200 hover:border-emerald-500 transition text-slate-600 bg-white font-normal";
+        } else {
+          if (currentVote === 'dislike') {
+            currentLikes += 1;
+            dislikeBtn.className = "dislike-btn flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-slate-200 hover:border-slate-400 transition text-slate-600 bg-white font-normal";
+          } else {
+            currentLikes += 1;
+          }
+          card.setAttribute('data-user-vote', 'like');
+          likeBtn.className = "like-btn flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-emerald-600 bg-emerald-700 text-white font-bold transition shadow-sm";
+        }
+      } else if (type === 'dislike') {
+        if (currentVote === 'dislike') {
+          currentLikes += 1;
+          card.setAttribute('data-user-vote', 'none');
+          dislikeBtn.className = "dislike-btn flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-slate-200 hover:border-slate-400 transition text-slate-600 bg-white font-normal";
+        } else {
+          if (currentVote === 'like') {
+            currentLikes -= 1;
+            likeBtn.className = "like-btn flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-slate-200 hover:border-emerald-500 transition text-slate-600 bg-white font-normal";
+          } else {
+            currentLikes -= 1;
+          }
+          card.setAttribute('data-user-vote', 'dislike');
+          dislikeBtn.className = "dislike-btn flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-white font-bold transition shadow-sm";
+        }
+      }
+
+      likeCountSpan.innerText = Math.max(0, currentLikes);
+    }
+
+    function showActiveSessionsModal() {
+      document.getElementById('sessionsModal').classList.remove('hidden');
+    }
+
+    function closeSessionsModal() {
+      document.getElementById('sessionsModal').classList.add('hidden');
+    }
+
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        el.classList.add('ring-2', 'ring-emerald-500');
+        setTimeout(() => el.classList.remove('ring-2', 'ring-emerald-500'), 2000);
+      }
+    }
+
+    function toggleCommentBox(button) {
+      const container = button.closest('.post-card');
+      const commentSection = container.querySelector('.comment-section');
+      commentSection.classList.toggle('hidden');
+    }
+
+    function addComment(button) {
+      const container = button.closest('.post-card');
+      const input = container.querySelector('.comment-input');
+      const commentList = container.querySelector('.comments-list');
+      const commentCountSpan = container.querySelector('.comment-count');
+
+      if (input.value.trim() === '') return;
+
+      const newCommentHtml = `<div class="bg-white p-2 rounded border border-slate-100"><strong>You:</strong> ${input.value}</div>`;
+      commentList.insertAdjacentHTML('beforeend', newCommentHtml);
+
+      let currentComments = parseInt(commentCountSpan.innerText);
+      commentCountSpan.innerText = currentComments + 1;
+
+      input.value = '';
+    }
+
+    function createPost(e) {
+      e.preventDefault();
+      const content = document.getElementById('postContent').value;
+      const feed = document.getElementById('postsFeed');
+
+      const postHtml = `
+        <div class="border-t pt-4 bg-emerald-50/50 p-4 rounded-lg post-card" data-user-vote="none">
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-8 h-8 rounded-full bg-emerald-700 text-white font-bold text-xs flex items-center justify-center">YOU</div>
+            <div>
+              <h4 class="text-sm font-bold text-slate-800">You <span class="text-xs font-normal text-slate-400">• Just now</span></h4>
+            </div>
+          </div>
+          <p class="text-sm text-slate-700">${content}</p>
+
+          <div class="mt-3 flex items-center space-x-4 text-xs text-slate-600 font-medium">
+            <button onclick="handleVote(this, 'like')" class="like-btn flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-slate-200 hover:border-emerald-500 transition text-slate-600 bg-white font-normal">
+              <i class="fa-regular fa-thumbs-up"></i> 
+              <span>Like (<span class="like-count">0</span>)</span>
+            </button>
+            <button onclick="handleVote(this, 'dislike')" class="dislike-btn flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-slate-200 hover:border-slate-400 transition text-slate-600 bg-white font-normal">
+              <i class="fa-regular fa-thumbs-down"></i> 
+              <span>Dislike</span>
+            </button>
+            <button onclick="toggleCommentBox(this)" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-slate-200 hover:border-emerald-500 transition">
+              <i class="fa-regular fa-comment"></i> 
+              <span>Comment (<span class="comment-count">0</span>)</span>
+            </button>
+          </div>
+
+          <div class="comment-section hidden mt-3 bg-white p-3 rounded-lg border border-slate-200 space-y-2">
+            <div class="comments-list space-y-2 text-xs text-slate-600"></div>
+            <div class="flex gap-2 mt-2">
+              <input type="text" placeholder="Write a helpful reply..." class="comment-input flex-1 px-3 py-1.5 border rounded text-xs outline-none focus:ring-1 focus:ring-emerald-500" />
+              <button onclick="addComment(this)" class="bg-emerald-700 text-white px-3 py-1.5 rounded text-xs font-bold hover:bg-emerald-800">Reply</button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      feed.insertAdjacentHTML('afterbegin', postHtml);
+      document.getElementById('postForm').reset();
+    }
+  </script>
+</body>
+</html>

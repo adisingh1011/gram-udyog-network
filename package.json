@@ -1,0 +1,12 @@
+{
+  "name": "gram-udyog-network",
+  "version": "1.0.0",
+  "description": "Digital platform connecting rural entrepreneurs with mentors, incubators, and schemes",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
