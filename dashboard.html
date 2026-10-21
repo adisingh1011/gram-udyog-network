@@ -44,9 +44,9 @@
 
         <div class="flex items-center space-x-2 bg-emerald-700 px-3 py-1 rounded-full border border-emerald-600">
           <div id="userInitials" class="w-7 h-7 rounded-full bg-emerald-900 text-yellow-300 font-bold text-xs flex items-center justify-center border border-yellow-300">
-            RV
+            AS
           </div>
-          <span id="userNameDisplay" class="text-xs font-semibold text-white">Ramesh Verma</span>
+          <span id="userNameDisplay" class="text-xs font-semibold text-white">Aditya Singh</span>
         </div>
         <a href="index.html" class="text-sm text-yellow-200 hover:underline">Exit Dashboard</a>
       </div>
@@ -107,9 +107,9 @@
         <div id="postsFeed" class="mt-6 space-y-4">
           <div class="border-t pt-4 post-card" data-user-vote="none">
             <div class="flex items-center space-x-3 mb-2">
-              <div class="w-8 h-8 rounded-full bg-emerald-600 text-white font-bold text-xs flex items-center justify-center post-user-initials">RV</div>
+              <div class="w-8 h-8 rounded-full bg-emerald-600 text-white font-bold text-xs flex items-center justify-center post-user-initials">AS</div>
               <div>
-                <h4 class="text-sm font-bold text-slate-800"><span class="post-user-name">Ramesh Verma</span> <span class="text-xs font-normal text-slate-400">• Agri-Processing (Satara)</span></h4>
+                <h4 class="text-sm font-bold text-slate-800"><span class="post-user-name">Aditya Singh</span> <span class="text-xs font-normal text-slate-400">• Agri-Processing (Satara)</span></h4>
                 <p class="text-xs text-slate-400">2 hours ago</p>
               </div>
             </div>
@@ -217,13 +217,13 @@
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <script>
-    // Load dynamic user session details
+    // Dynamically load registered/logged-in user details from localStorage
     document.addEventListener("DOMContentLoaded", () => {
-      const storedName = localStorage.getItem('userName') || localStorage.getItem('registeredName') || 'Ramesh Verma';
+      const storedName = localStorage.getItem('userName') || localStorage.getItem('registeredName') || localStorage.getItem('name') || 'Aditya Singh';
       const nameParts = storedName.trim().split(' ');
-      let initials = 'RV';
+      let initials = 'AS';
       if (nameParts.length >= 2) {
-        initials = (nameParts[0][0] + nameParts[1][0]).toUpperCase();
+        initials = (nameParts[0][0] + nameParts[nameParts.length - 1][0]).toUpperCase();
       } else if (nameParts.length === 1 && nameParts[0].length > 0) {
         initials = nameParts[0].substring(0, 2).toUpperCase();
       }
@@ -243,7 +243,7 @@
       od: { "Community Peer Discussion Forum": "ସମୁଦାୟ ସହକର୍ମୀ ଆଲୋଚନା ମଞ୍ଚ", "Quick Overview": "ଶୀଘ୍ର ସମୀକ୍ଷା", "Your Government Support Applications": "ଆପଣଙ୍କ ସରକାରୀ ସହାୟତା ଆବେଦନ" },
       ml: { "Community Peer Discussion Forum": "കമ്മ്യൂണിറ്റി പീർ ചർച്ചാ ഫോറം", "Quick Overview": "ദ്രുത അവലോകനം", "Your Government Support Applications": "നിങ്ങളുടെ സർക്കാർ പിന്തുണ അപേക്ഷകൾ" },
       mai: { "Community Peer Discussion Forum": "सामुदायिक सहकर्मी चर्चा मंच", "Quick Overview": "त्वरित सिंहावलोकन", "Your Government Support Applications": "अहाँक सरकारी सहयोग आवेदन" },
-      ks: { "Community Peer Discussion Forum": "کمیونٹی ہم منصب بحث فورم", "Quick Overview": "فوری جائزہ", "Your Government Support Applications": "تُہٕنٛز سرکاری مدد ہٕنٛز درخواستہٕ" },
+      ks: { "Community Peer Discussion Forum": "کمیونٹی ہم منصب بحث فورم", "Quick Overview": "فوری جائزہ", "Your Government Support Applications": "تُہٕنٛز مدد ہٕنٛز درخواستہٕ" },
       ne: { "Community Peer Discussion Forum": "सामुदायिक सहकर्मी छलफल मञ्च", "Quick Overview": "द्रुत सिंहावलोकन", "Your Government Support Applications": "तपाईंको सरकारी सहयोग आवेदनहरू" },
       kok: { "Community Peer Discussion Forum": "सामुदायिक सहकर्मी चर्चा मंच", "Quick Overview": "बेगीन सिंहावलोकन", "Your Government Support Applications": "तुमचे सरकारीदार आधार अर्ज" },
       doi: { "Community Peer Discussion Forum": "सामुदायिक सहकर्मी चर्चा मंच", "Quick Overview": "त्वरित सिंहावलोकन", "Your Government Support Applications": "तुंदी सरकारी मदद आबर्तन" },
@@ -345,7 +345,7 @@
 
       if (input.value.trim() === '') return;
 
-      const storedName = localStorage.getItem('userName') || localStorage.getItem('registeredName') || 'You';
+      const storedName = localStorage.getItem('userName') || localStorage.getItem('registeredName') || localStorage.getItem('name') || 'You';
       const newCommentHtml = `<div class="bg-white p-2 rounded border border-slate-100"><strong>${storedName}:</strong> ${input.value}</div>`;
       commentList.insertAdjacentHTML('beforeend', newCommentHtml);
 
@@ -359,11 +359,11 @@
       e.preventDefault();
       const content = document.getElementById('postContent').value;
       const feed = document.getElementById('postsFeed');
-      const storedName = localStorage.getItem('userName') || localStorage.getItem('registeredName') || 'Ramesh Verma';
+      const storedName = localStorage.getItem('userName') || localStorage.getItem('registeredName') || localStorage.getItem('name') || 'Aditya Singh';
       const nameParts = storedName.trim().split(' ');
-      let initials = 'RV';
+      let initials = 'AS';
       if (nameParts.length >= 2) {
-        initials = (nameParts[0][0] + nameParts[1][0]).toUpperCase();
+        initials = (nameParts[0][0] + nameParts[nameParts.length - 1][0]).toUpperCase();
       }
 
       const postHtml = `
